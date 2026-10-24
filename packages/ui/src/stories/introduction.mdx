@@ -1,0 +1,36 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Introduction" />
+
+# nagiflow/ui
+
+nagiflow のプロダクトを最速で、しかも「AI がゼロから作ったっぽさ」なしに立ち上げるためのデザインシステムです。
+
+- **Components** — Tailwind CSS v4 + Radix UI。`import` するだけで nagiflow のテーマが当たります。
+- **Blocks** — LP / Dashboard / Settings / Auth の「正解パターン」をページ単位で提供。データとコピーを props で流し込むだけで使えます。
+- **Illustrations** — アイソメトリック図やプロダクト画面フレームを、画像ではなくコードで描きます。テーマ・ダークモードに自動追従します。
+
+## 原則
+
+1. **情報の迷子を作らない** — 今どこにいるか（ナビの現在地、パンくず、ページタイトル）が常に分かる。主要アクションは常に右上。
+2. **認知負荷を極限まで下げる** — 1画面1主要アクション。装飾ではなく、余白と文字の階層で整理する。
+3. **ライブラリはプロダクトの足を引っ張らない** — 足りなければアプリ側で先に作る（`src/` をコピーして改造してよい）。良いものは後でここに還元する。
+
+## 使い方（Next.js）
+
+```bash
+bun add @nagiflow/ui
+```
+
+```css
+/* app/globals.css */
+@import "tailwindcss";
+@import "@nagiflow/ui/styles.css";
+```
+
+```tsx
+import { Button } from "@nagiflow/ui"
+import { AppShell, PageHeader } from "@nagiflow/ui/blocks"
+```
+
+nagiflow の色は昼が「藍」、夜が「墨」。プロダクト別に変える場合は `:root { --brand-h: 160; }` のように CSS 変数を上書きするだけです。ダークモードは `<html class="dark">`（next-themes の `attribute="class"` と互換）。

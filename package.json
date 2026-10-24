@@ -1,0 +1,11 @@
+{
+  "name": "nagiflow-ui-monorepo",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "dev": "bun --filter @nagiflow/ui storybook",
+    "build": "bun --filter @nagiflow/ui build",
+    "build-storybook": "bun --filter @nagiflow/ui build-storybook",
+    "typecheck": "bun --filter @nagiflow/ui typecheck"
+  }
+}

@@ -1,0 +1,177 @@
+/*
+ * @nagiflow/ui theme.
+ * Consumer:  @import "tailwindcss";  @import "@nagiflow/ui/styles.css";
+ * Override any token in your own :root to customize per product.
+ */
+@source "./dist";
+@source "./src";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Brand knobs ----------
+ * nagiflow = 藍 (deep indigo) by day, 墨 (ink) by night, with a vermilion focus ring at night.
+ * Light colors derive from the brand knobs; dark is a neutral ink theme tinted by the dark knobs.
+ * Per-product rebrand: override these in your own :root (e.g. --brand-h: 160).
+ */
+:root {
+  --brand-h: 230;
+  --brand-c: 0.07;
+  --brand-l: 0.36;
+  --neutral-h: 220;
+  --neutral-c: 0.008;
+  --dark-neutral-h: 60;
+  --dark-neutral-c: 0.004;
+  --dark-ring-h: 32;
+  --radius: 0.5rem;
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 calc(var(--neutral-c) * 3) var(--neutral-h));
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+  --muted: oklch(0.968 var(--neutral-c) var(--neutral-h));
+  --muted-foreground: oklch(0.48 calc(var(--neutral-c) * 3) var(--neutral-h));
+  --secondary: oklch(0.955 var(--neutral-c) var(--neutral-h));
+  --secondary-foreground: var(--foreground);
+  --border: oklch(0.905 calc(var(--neutral-c) * 1.5) var(--neutral-h));
+  --input: oklch(0.72 calc(var(--neutral-c) * 2) var(--neutral-h));
+
+  --primary: oklch(var(--brand-l) var(--brand-c) var(--brand-h));
+  --primary-hover: oklch(calc(var(--brand-l) - 0.06) var(--brand-c) var(--brand-h));
+  --primary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.95 calc(var(--brand-c) * 0.3) var(--brand-h));
+  --accent-foreground: oklch(var(--brand-l) var(--brand-c) var(--brand-h));
+  --ring: oklch(0.55 calc(var(--brand-c) * 1.4) var(--brand-h));
+
+  --destructive: oklch(0.53 0.2 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.52 0.13 152);
+  --warning: oklch(0.78 0.15 78);
+  --warning-foreground: oklch(0.3 0.06 60);
+  --info: oklch(0.52 0.14 240);
+
+  /* Chart series — checked with the dataviz palette validator (lightness band, chroma floor,
+   * CVD separation, normal-vision floor). Re-run it if you change these. */
+  --chart-1: oklch(0.62 0.109 230);
+  --chart-2: oklch(0.62 0.168 135);
+  --chart-3: oklch(0.5 0.151 270);
+  --chart-4: oklch(0.56 0.169 30);
+  --chart-5: oklch(0.68 0.169 330);
+
+  /* Dark band used by marketing sections; always pair with the `dark` class. */
+  --brand-surface: oklch(0.22 calc(var(--brand-c) * 0.65) var(--brand-h));
+  --brand-surface-foreground: oklch(0.97 0.01 var(--brand-h));
+
+  --sidebar: oklch(0.982 calc(var(--neutral-c) * 1.2) var(--neutral-h));
+  --sidebar-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+}
+
+/* Night: 墨 ink. Applies to the whole page (<html class="dark">) or to any dark band. */
+.dark {
+  --background: oklch(0.17 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+  --foreground: oklch(0.95 calc(var(--dark-neutral-c) * 1.5) var(--dark-neutral-h));
+  --card: oklch(0.205 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+  --popover: oklch(0.22 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+  --muted: oklch(0.25 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+  --muted-foreground: oklch(0.72 calc(var(--dark-neutral-c) * 2) var(--dark-neutral-h));
+  --secondary: oklch(0.27 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+  --border: oklch(0.3 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+  --input: oklch(0.45 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+
+  --primary: oklch(0.93 calc(var(--dark-neutral-c) * 1.2) var(--dark-neutral-h));
+  --primary-hover: oklch(1 0 0);
+  --primary-foreground: oklch(0.18 calc(var(--dark-neutral-c) * 1.2) var(--dark-neutral-h));
+  --accent: oklch(0.3 calc(var(--dark-neutral-c) * 1.2) var(--dark-neutral-h));
+  --accent-foreground: oklch(0.95 calc(var(--dark-neutral-c) * 1.2) var(--dark-neutral-h));
+  --ring: oklch(0.7 0.16 var(--dark-ring-h));
+
+  --destructive: oklch(0.65 0.19 25);
+  --success: oklch(0.7 0.14 152);
+  --info: oklch(0.7 0.12 240);
+
+  --chart-1: oklch(0.58 0.137 32);
+  --chart-2: oklch(0.66 0.136 270);
+  --chart-3: oklch(0.66 0.164 135);
+  --chart-4: oklch(0.62 0.148 315);
+  --chart-5: oklch(0.66 0.129 90);
+
+  --brand-surface: oklch(0.13 var(--dark-neutral-c) var(--dark-neutral-h));
+  --brand-surface-foreground: oklch(0.97 var(--dark-neutral-c) var(--dark-neutral-h));
+  --sidebar: oklch(0.19 calc(var(--dark-neutral-c) * 2.5) var(--dark-neutral-h));
+  /* Aliases must be re-declared so nested dark bands resolve them against dark values. */
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --secondary-foreground: var(--foreground);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+}
+
+@theme inline {
+  --font-sans: var(--nf-font-sans, "Hanken Grotesk", "Hanken Grotesk Variable", "Noto Sans JP", "Noto Sans JP Variable", ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--nf-font-mono, "Geist Mono", "Geist Mono Variable", ui-monospace, "SFMono-Regular", monospace);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-foreground: var(--brand-surface-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Japanese body copy needs generous leading; Latin-only UIs can tighten per component. */
+    line-height: 1.7;
+    font-feature-settings: "palt" 0;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
+  h1, h2, h3, h4 { line-height: 1.35; text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
